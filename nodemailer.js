@@ -4,9 +4,9 @@ import {google} from "googleapis"
 
 
 const client_id="543519367783-8rthmcbg05l5ue049mstkmb3qjjugk7e.apps.googleusercontent.com";
-const client_secret=process.env.secret ||"cxlJsDxELESfrVCyf0BLtk5j";
+const client_secret=process.env.secret;
 const redirect_uri="https://developers.google.com/oauthplayground";
-const Refresh_Token="1//04mcLeJKhv3iaCgYIARAAGAQSNwF-L9IrQW8i5B7dVsi-WwCYjOjJSQz7-_y2OZ90zobW53Mkg74dS_7dyqpXKVudX8lu9SNWZk0";
+const Refresh_Token=process.env.REFRESH_TOKEN;
 
 const oAuth2Client= new google.auth.OAuth2(client_id,client_secret,redirect_uri)
 

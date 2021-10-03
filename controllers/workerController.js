@@ -69,7 +69,7 @@ export const employeeLogin =async (body)=>{
        return false;
       
     }
-    const token=jwt.sign({id:userLoggingIn._id},"mysecretkey");
+    const token=jwt.sign({id:userLoggingIn._id},process.env.JWT_KEY);
 
     let data={name:userLoggingIn.name,email:userLoggingIn.email,token,role:userLoggingIn.role,message:"login success"};
     console.log("---- successful login of employee----");
@@ -96,7 +96,7 @@ export const custodianLogin =async (body)=>{
        return false;
       
     }
-    const token=jwt.sign({id:userLoggingIn._id},"mysecretkey");
+    const token=jwt.sign({id:userLoggingIn._id},process.env.JWT_KEY);
 
     let data={name:userLoggingIn.name,email:userLoggingIn.email,token,role:userLoggingIn.role,message:"login success"};
     console.log("---- successful login of custodian----");

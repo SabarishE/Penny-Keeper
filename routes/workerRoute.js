@@ -195,35 +195,8 @@ console.log(error);
 console.log('Email sent: ' + info.response);
 }
 });
-
-
-
-  return res.send({onetimelink:link,email:pwdrequester.email,msg:"verification link sent to your email"});
+return res.send({onetimelink:link,email:pwdrequester.email,msg:"verification link sent to your email"});
 }
-
-  
-  //-----sending one time link through mail using "nodemailer"
-  
-  
-//       var mailOptions = {
-//         from: 'one.trial.one.trial@gmail.com',
-//         to:pwdrequester.email ,
-//         subject: 'Password reset link from Bill Box',
-//         html:`<h3>Verification Link from Bill Box</h3><p>${link}</p>
-//         <p>Regards,<br>Team BillBox</p>`
-
-//       };
-  
-//       transporter.sendMail(mailOptions, function(error, info){
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log('Email sent: ' + info.response);
-//   }
-//   });
-  
-  
-//       res.send({onetimelink:link,email:pwdrequester.email});
 
   
   });
