@@ -97,6 +97,26 @@ else{
 })
 
 
+// ----------getting all custodians------
+
+wrouter.get("/allcustodians",async(req,res)=>{
+
+    try{
+        const custodians=await Custodian.find({},{_id:0,passwordHash:0,record:0,email:0,role:0,tempString:0,fundinbox:0});
+
+        // console.log("custodians found",custodians)
+        res.send({msg:"all custodians retreived",data:custodians})
+    }
+    catch(err){
+        console.log("error in finding all custodians")
+        res.status(500).send({msg:"error in finding all custodians",error:err})
+    }
+   
+
+
+
+})
+
 
 // -----Password reset flow starts-------
 
