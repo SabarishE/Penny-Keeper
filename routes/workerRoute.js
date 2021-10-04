@@ -185,7 +185,7 @@ var mailOptions = {
     to:"one.trial.one.trial@gmail.com" ,
     subject: 'Password reset link from Penny Keeper',
     html:`<h3>Verification Link from Penny Keeper</h3><p>${link}</p>
-    <p>Regards,<br>Team Penny Keeper,Your petty cash manager</p>`
+    <p>Regards,<br>Penny Keeper,Your petty cash manager</p>`
 };
 
   transporter.sendMail(mailOptions, function(error, info){
