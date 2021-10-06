@@ -69,11 +69,11 @@ export const submitBill =async (body)=>{
                 }
                 else{
                     console.log("bill submitted !!!",data);
-                    return data
+                    return data;
                 }
                 
             }).catch((err) => {
-                console.log("error in bill submission >>>",err)
+                console.log("error in bill submission caught >>>",err)
                 return false;
                 
             })

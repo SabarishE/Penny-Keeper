@@ -56,7 +56,7 @@ trouter.patch("/approve-fund",async(req,res)=>{
 
 trouter.patch("/submit-bill",async(req,res)=>{
 
-    const billSubmitted =await submitBill(req.body);
+    const billSubmitted = submitBill(req.body);
 
    if(billSubmitted){
        return  res.status(200).send({msg:"bill submitted",data:billSubmitted})
