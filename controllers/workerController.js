@@ -15,7 +15,7 @@ export const addCustodian =async(body)=>{
         return false;
     }
 
-const add={name:body.name,email:body.email,role:body.role,passwordHash:body.passwordHash,intitialfund:body.intitialfund,fundinbox:body.fundinbox}
+const add={name:body.name,email:body.email,role:body.role,passwordHash:body.passwordHash}
     try{
         const newWorker = await new Custodian(add).save();
         return newWorker;

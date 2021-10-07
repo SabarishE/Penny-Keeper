@@ -15,10 +15,11 @@ const custodianSchema =new mongoose.Schema({
     email:{type:String,required:true},
     role:{type:String,required:true},
     passwordHash:{type:String},
+    initialfund:{type:Number,dafault:100},
+    fundinbox:{type:Number,default:100},
     tempString:{type:String},
 
-    intitialfund:{type:Number,dafault:100},
-    fundinbox:{type:Number,default:100},
+
 
 record:[
     {
