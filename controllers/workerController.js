@@ -113,7 +113,7 @@ let filter={name:body.name};
 let options={new: true,useFindAndModify:false};
 
 let recordData={remaining:body.remaining,replenishment:body.replenishment}
-let update1={fundinbox:body.replenishment};
+let update1={$inc:{fundinbox:body.replenishment}};
 let update2={$push :{record:recordData}};
 
 let promise1=Custodian.findOneAndUpdate(filter,update1,options)
