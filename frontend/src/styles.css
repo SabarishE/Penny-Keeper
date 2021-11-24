@@ -1,0 +1,796 @@
+/* -------font styles-------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  background-color: rgb(69, 128, 75);
+  box-shadow: 0 1px 8px 1px rgb(69, 128, 75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-image: linear-gradient(
+    90deg,
+    rgb(255, 248, 121),
+    rgb(69, 128, 75)
+  );
+  z-index: 1;
+}
+.header .header-1 {
+  display: flex;
+  align-items: center;
+}
+
+.header .header-1 span {
+  font-size: 1.8rem;
+  margin: auto 1rem;
+  color: rgb(46, 97, 50);
+  font-family: "Russo One", sans-serif;
+  text-shadow: 1px -1px 5px white, 2px 1px 0 rgb(69, 128, 75);
+}
+.header .header-1 img {
+  margin-left: 1rem;
+  background-color: rgb(25, 85, 45);
+  padding: 3px 3px 3px 6px;
+  border-radius: 4px;
+}
+.header .header-1 img:hover {
+  cursor: pointer;
+  box-shadow: 0 0 3px 2px rgb(25, 85, 45);
+  transition: 0.3s;
+}
+.badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 140px;
+  margin-right: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  box-shadow: 0 0 4px 2px rgb(255, 248, 121);
+
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+}
+.badge img {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: auto 0.25rem;
+}
+.badge img:hover {
+  cursor: pointer;
+}
+.c1 {
+  width: 100px;
+  height: 100px;
+}
+.employee-container,
+.custodian-container,
+.homepage-container {
+  margin-top: 10vh;
+}
+h1 {
+  margin: 0;
+}
+h1 span {
+  margin-left: 1rem;
+}
+/* -----STYLING FOR EMPLOYEE PAGE------ */
+.employee-dashboard,
+.employee-receipts,
+.employee-pendingbills {
+  min-height: 90vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* -----EMPLOYEE DASHBOARD SECTION STARTS----- */
+.employee-dashboard {
+  background-image: linear-gradient(
+    90deg,
+    rgb(255, 248, 121),
+    rgb(247, 243, 180)
+  );
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.employee-info,
+.custodian-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 400px;
+}
+
+.employee-info .employee-id,
+.custodian-info .custodian-id {
+  display: flex;
+  width: 300px;
+  height: 150px;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px 2px rgb(69, 128, 75);
+  font-family: "Russo One", sans-serif;
+  font-weight: lighter;
+  background-color: rgb(248, 243, 171);
+}
+.employee-info .employee-id .e-details,
+.custodian-info .c-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.e-details .e-email,
+.c-details .c-email {
+  font-size: 0.8rem;
+}
+
+.employee-info .employee-id div img,
+.custodian-id div img {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.employee-data,
+.custodian-data {
+  display: flex;
+  justify-content: space-between;
+}
+.employee-info .employee-data .data-box,
+.custodian-info .data-box {
+  width: 30%;
+  background-color: white;
+  height: 100px;
+  font-weight: bold;
+  padding-left: 0.25rem;
+  border-left: 5px solid rgb(128, 247, 140);
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: rgb(95, 95, 95);
+}
+.employee-info .employee-data .data-box div,
+.custodian-info .data-box div {
+  height: 20%;
+  font-family: "Russo One", sans-serif;
+  font-weight: lighter;
+}
+.employee-info .employee-data div span,
+.custodian-info .custodian-data div span {
+  display: block;
+  margin: 1.5rem auto;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(37, 88, 43);
+  font-family: "Orbitron", sans-serif;
+}
+.custodian-info .custodian-data div span {
+  color: rgb(204, 196, 47);
+}
+
+/* ----EMPLOYEE FUND REQUEST FORM----- */
+.employee-dashboard .request-form {
+  box-shadow: 0 0 8px 2px rgb(69, 128, 75);
+  width: 300px;
+  height: 450px;
+  box-sizing: border-box;
+}
+.employee-dashboard .request-form .form-head {
+  background-color: rgb(69, 128, 75);
+  color: white;
+  width: 100%;
+  height: 3rem;
+  font-size: 1.5rem;
+  margin-top: 0;
+  padding: 0.5rem 0 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: "Russo One", sans-serif;
+}
+.employee-dashboard .request-form form {
+  height: 85%;
+}
+.employee-dashboard .request-form div {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0.75rem auto;
+  font-size: 1.2rem;
+  height: 4rem;
+}
+label {
+  font-family: "Russo One", sans-serif;
+  color: grey;
+}
+
+.employee-dashboard .request-form div input,
+.employee-dashboard .request-form div select {
+  height: 1.5rem;
+}
+.employee-dashboard .request-form input[type="submit"] {
+  display: block;
+  height: 2rem;
+  width: 50%;
+  margin: auto;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: 2px solid rgb(69, 128, 75);
+  background-color: rgb(109, 175, 142);
+  color: white;
+  cursor: pointer;
+}
+.employee-dashboard .request-form input[type="submit"]:hover {
+  box-shadow: 0 0 8px 2px rgb(69, 128, 75);
+  transition: 0.3s;
+}
+.employee-dashboard .request-form textarea {
+  height: 2.5rem;
+}
+.custom-error {
+  font-size: 0.8rem;
+  color: rgb(245, 82, 82);
+  font-family: "Russo One", sans-serif;
+}
+.custom-error img {
+  width: 1rem;
+  height: 1rem;
+}
+/* -----EMPLOYEE DASHBOARD SECTION ENDS----- */
+
+/* -----EMPLOYEE RECEIPTS SECTION STARTS----- */
+.employee-receipts {
+  background-color: rgb(69, 128, 75);
+  color: white;
+  padding: 1.5rem 0;
+}
+.employee-receipts .receipts-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.employee-receipts h1 {
+  margin-left: 1rem;
+  font-family: Verdana, Geneva, Tahoma;
+}
+
+/* ----RECEIPT DESIGN STARTS----- */
+.receit {
+  width: 280px;
+  height: 384px;
+  padding: 0 0.25rem;
+  background-color: rgb(250, 249, 196);
+  color: black;
+  box-sizing: border-box;
+  margin: 3rem auto;
+  box-shadow: 0 0 10px 2px rgb(54, 54, 54);
+  font-family: Verdana, Geneva, Tahoma;
+  margin-top: 5rem;
+}
+
+.receit-1 {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+.receit-2 {
+  text-align: left;
+  font-size: 0.8rem;
+}
+.receit-2 th {
+  font-size: 0.7rem;
+}
+.receit-4 {
+  display: flex;
+  font-size: 0.8rem;
+}
+.receit-5 {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+}
+
+/* ----EMPLOYEE PENDING BILLLS and CUSTODIAN PENDING REQUESTS STARTS----- */
+
+.employee-pendingbills {
+  background-color: rgb(252, 248, 168);
+  padding: 1.5rem;
+}
+
+.no-pendingbills,
+.no-pendingrequests {
+  width: 300px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  margin: 150px 0 0 40%;
+}
+
+.employee-pendingbills h1 {
+  font-family: Verdana, Geneva, Tahoma;
+  color: rgb(69, 128, 75);
+}
+
+.pendingbills-flex,
+.pendingrequests-flex {
+  display: flex;
+  padding: 1rem 0;
+}
+
+.pendingbills-flex .card,
+.pendingrequests-flex .card {
+  background-color: rgb(255, 148, 148);
+  color: rgb(19, 18, 18);
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+.pendingrequests-flex .card {
+  background-color: rgb(243, 241, 196);
+}
+.pendingbills-flex .card .card-1,
+.pendingrequests-flex .card .card-1 {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  font-size: 0.75rem;
+  font-family: Verdana, Geneva, Tahoma;
+}
+.pendingbills-flex .card .card-1 span span,
+.pendingrequests-flex .card .card-1 span span {
+  font-weight: bold;
+}
+.pendingbills-flex .card .card-2,
+.pendingrequests-flex .card .card-2 {
+  padding-left: 0.5rem;
+  width: 20%;
+}
+.pendingbills-flex .card .card-2 button,
+.pendingrequests-flex .card .card-2 button {
+  background-color: rgb(54, 150, 91);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pendingbills-flex .card .card-2 button:hover,
+.pendingrequests-flex .card .card-2 button:hover {
+  box-shadow: 0 0 2px 3px white;
+  transition: 0.3s;
+}
+/* ----EMPLOYEE PENDING BILLLS and CUSTODIAN PENDING REQUESTS ENDS----- */
+
+/* ------STYLING FOR CUSTODIAN STARTS------ */
+
+.custodian-dashboard,
+.custodian-pendingrequests,
+.custodian-transactions {
+  min-height: 90vh;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+.custodian-pendingrequests h1,
+.custodian-transactions h1 {
+  font-family: Verdana, Geneva, Tahoma;
+  color: rgb(255, 247, 104);
+}
+.custodian-dashboard,
+.custodian-transactions {
+  background-image: linear-gradient(
+    90deg,
+    rgb(143, 187, 145),
+    rgb(69, 128, 75)
+  );
+}
+.custodian-pendingrequests {
+  background-image: linear-gradient(
+    90deg,
+    rgb(69, 128, 75),
+    rgb(143, 187, 145)
+  );
+}
+
+.custodian-dashboard {
+  display: flex;
+  justify-content: space-evenly;
+
+  box-sizing: border-box;
+}
+
+.replenishment-box {
+  width: 300px;
+  background-color: rgb(143, 187, 145);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  font-family: "Russo One", sans-serif;
+  border-radius: 4px;
+}
+.replenishment-box h3 {
+  margin: 0;
+  font-weight: lighter;
+  color: rgb(63, 63, 63);
+}
+
+.replenishment-box span {
+  font-size: 2rem;
+  color: rgb(245, 78, 78);
+}
+
+.custodian-chart {
+  height: 300px;
+  width: 300px;
+  margin: 2rem 0;
+  padding: 0.25rem;
+  background-color: rgb(143, 187, 145);
+  box-shadow: 0 0 6px 2px rgb(58, 58, 56);
+}
+
+.replenish-fund {
+  border: 1px solid rgb(255, 247, 104);
+  width: 300px;
+  box-sizing: border-box;
+  padding: 0.5rem 0.2rem;
+  box-shadow: 0 0 3px 2px rgb(255, 247, 104);
+}
+.replenish-fund button {
+  background-color: rgb(255, 247, 104);
+  height: 1.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+}
+.replenish-fund button:hover {
+  box-shadow: 0 0 3px 2px rgb(255, 247, 104);
+}
+
+/* -----CUSTODIAN TRANSACTION TABLE STARTS----- */
+.transactions-table {
+  margin-top: 1rem;
+  font-family: Verdana, Geneva, Tahoma;
+  font-size: 0.8rem;
+  width: 100%;
+  color: white;
+}
+
+.transactions-table th,
+.transactions-table td {
+  border: 1px solid black;
+  text-align: center;
+}
+.transactions-table th,
+.transactions-table .td-Id {
+  text-align: left;
+  background-color: black;
+  color: rgb(241, 236, 136);
+}
+.transactions-table .td-Id {
+  font-size: 0.6rem;
+}
+.no-transactions {
+  margin: 1.5rem;
+  display: flex;
+}
+
+/* -----CUSTODIAN TRANSACTION TABLE ENDS----- */
+
+/* -----HOME PAGE STYING STARTS------ */
+
+.homepage-container {
+  padding: 2rem;
+  background-image: linear-gradient(
+    180deg,
+    rgb(253, 248, 145) 30%,
+    rgb(69, 128, 75)
+  );
+  min-height: 100vh;
+}
+
+/* -----Authentication forms starts (Log in,Sign up ,Forgot password,Reset password} starts---- */
+
+.login-signup {
+  min-height: 90vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+.auth-div {
+  max-width: 300px;
+  padding-bottom: 0.5rem;
+  margin: auto;
+  margin-top: 4rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 5px rgb(36, 25, 25);
+  background-image: linear-gradient(
+    180deg,
+    rgb(255, 248, 121) 75%,
+    rgb(69, 128, 75)
+  );
+}
+
+.auth-div input,
+.auth-div label,
+.auth-div select {
+  font-size: 1.5rem;
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+
+.auth-div input,
+.auth-div select {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 2px solid rgb(146, 146, 146);
+}
+
+.formDiv {
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  background: black;
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  line-height: 1.2rem;
+}
+.formDiv .loader-span {
+  margin-left: 2rem;
+}
+
+.auth-div input[type="submit"] {
+  margin: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  max-width: 50%;
+}
+
+.formDiv label span {
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 0.2rem;
+  color: grey;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.formDiv label {
+  color: black;
+}
+
+.loginFooter {
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin-top: 0.75rem;
+}
+.password-change-container {
+  height: 90vh;
+  margin-top: 10vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-image: linear-gradient(
+    180deg,
+    rgb(255, 248, 121) 50%,
+    rgb(69, 128, 75)
+  );
+}
+.verify-div {
+  width: 300px;
+  border-radius: 0.5rem;
+  background-color: black;
+  height: 120px;
+  color: rgb(255, 248, 121);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma;
+  margin: auto;
+}
+.verify-div button {
+  display: block;
+  margin: 0.5rem auto;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: rgb(255, 248, 121);
+}
+.verify-div button:hover {
+  box-shadow: 0 0 3px 2px rgb(255, 248, 121);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.verify-div .loader-span {
+  margin-left: 1.5rem;
+}
+/* -----Authentication forms ends (Log in,Sign up ,Forgot password,Reset password} ends---- */
+.about {
+  padding: 2rem;
+  font-family: "Russo One", sans-serif;
+  color: rgb(90, 89, 89);
+}
+.about h1 {
+  color: rgb(255, 248, 121);
+  background-color: rgb(29, 59, 29);
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+.about .tag {
+  font-size: 1.5rem;
+  margin: 0 auto 2rem auto;
+  width: 70%;
+  color: rgb(50, 116, 55);
+}
+
+/* -----HOME PAGE STYING ENDS------ */
+
+/* ------------MEDIA QUERIES STARTS----- */
+
+@media screen and (max-width: 400px) {
+  .employee-info .employee-id,
+  .custodian-info .custodian-id {
+    margin: auto;
+  }
+
+  .employee-info,
+  .custodian-info {
+    width: 300px;
+  }
+
+  .employee-info .employee-data .data-box div,
+  .custodian-info .data-box div {
+    font-size: 0.8rem;
+  }
+  .employee-info .employee-data div span,
+  .custodian-info .custodian-data div span {
+    margin: 1.5rem auto;
+    width: 25px;
+    height: 25px;
+    font-size: 1.5rem;
+  }
+  .pendingbills-flex .card,
+  .pendingrequests-flex .card {
+    padding: 0.15rem;
+    font-size: 0.5rem;
+  }
+  .pendingbills-flex .card .card-2,
+  .pendingrequests-flex .card .card-2 {
+    padding-left: 0rem;
+  }
+
+  .custodian-pendingrequests,
+  .custodian-replenishments {
+    padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .header {
+    height: 20vh;
+    padding-top: 1rem;
+    align-items: flex-start;
+  }
+  .badge {
+    top: 3.5rem;
+    right: 0.5rem;
+  }
+  .employee-container,
+  .custodian-container,
+  .homepage-container {
+    margin-top: 20vh;
+  }
+}
+@media screen and (max-width: 670px) {
+  .custodian-dashboard,
+  .employee-dashboard {
+    flex-wrap: wrap;
+    padding: 2rem 0.5rem;
+  }
+  .custodian-info {
+    justify-content: space-between;
+  }
+  .custodian-id,
+  .employee-id,
+  .c-details,
+  .e-details,
+  .replenishment-box,
+  .custodian-data,
+  .employee-data {
+    margin: 1rem 0;
+  }
+}
+@media screen and (max-width: 710px) {
+  .custodian-transactions {
+    padding: 0.5rem;
+  }
+
+  .transactions-table th {
+    display: none;
+    border: none;
+  }
+  .transactions-table tr {
+    display: block;
+    margin: 1rem auto;
+    border: 1px solid black;
+    z-index: 0;
+  }
+  .transactions-table tr:nth-child(1) {
+    display: none;
+  }
+  .transactions-table tr td {
+    text-align: right;
+    border: none;
+    display: block;
+    margin: auto;
+    position: relative;
+    padding-left: 5.25rem;
+    word-break: break-all;
+    margin: auto;
+  }
+  .transactions-table tr td:before {
+    content: attr(data-label);
+    text-align: left;
+    position: absolute;
+    left: 0.15rem;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    color: black;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .about {
+    padding: 0rem;
+  }
+  .login-signup {
+    flex-wrap: wrap;
+  }
+  .custodian-replenishments .replenishment-flex {
+    width: 100%;
+  }
+  .custodian-replenishments .replenishment-flex li {
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+  }
+  .receit {
+    margin: 1rem auto;
+  }
+}
+/* ------------MEDIA QUERIESENDS----- */
+
+@media screen and (max-width: 1100px) {
+  .custodian-replenishments .replenishment-flex {
+    width: 100%;
+  }
+}
