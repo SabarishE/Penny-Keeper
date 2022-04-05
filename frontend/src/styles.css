@@ -50,6 +50,15 @@ body {
   box-shadow: 0 0 3px 2px rgb(25, 85, 45);
   transition: 0.3s;
 }
+
+.homepage-image{
+  width:250px;
+  height:250px;
+}
+.homepage-image image{
+  width: 100%;
+height: 100%;
+}
 .badge {
   display: flex;
   justify-content: space-between;
@@ -79,8 +88,7 @@ body {
   height: 100px;
 }
 .employee-container,
-.custodian-container,
-.homepage-container {
+.custodian-container{
   margin-top: 10vh;
 }
 h1 {
@@ -89,6 +97,11 @@ h1 {
 h1 span {
   margin-left: 1rem;
 }
+.homepage-container {
+display: flex;
+flex-wrap: wrap;
+}
+
 /* -----STYLING FOR EMPLOYEE PAGE------ */
 .employee-dashboard,
 .employee-receipts,
@@ -426,7 +439,7 @@ label {
   width: 300px;
   background-color: rgb(143, 187, 145);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   padding: 0.5rem;
@@ -440,7 +453,7 @@ label {
 }
 
 .replenishment-box span {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: rgb(245, 78, 78);
 }
 
@@ -504,13 +517,13 @@ label {
 /* -----HOME PAGE STYING STARTS------ */
 
 .homepage-container {
-  padding: 2rem;
+  padding: 4rem 2rem 1rem 2rem;
   background-image: linear-gradient(
     180deg,
     rgb(253, 248, 145) 30%,
     rgb(69, 128, 75)
   );
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 /* -----Authentication forms starts (Log in,Sign up ,Forgot password,Reset password} starts---- */
@@ -519,9 +532,10 @@ label {
   min-height: 90vh;
   display: flex;
   justify-content: space-evenly;
-}
+  width:50%
+ }
 .auth-div {
-  max-width: 300px;
+  width: 300px;
   padding-bottom: 0.5rem;
   margin: auto;
   margin-top: 4rem;
@@ -639,6 +653,7 @@ label {
   padding: 2rem;
   font-family: "Russo One", sans-serif;
   color: rgb(90, 89, 89);
+  width:40%;
 }
 .about h1 {
   color: rgb(255, 248, 121);
@@ -654,6 +669,48 @@ label {
 }
 
 /* -----HOME PAGE STYING ENDS------ */
+
+/* -----PAGINATION STYLING ENDS------ */
+
+.Pagination{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.Pagination div{
+  margin:auto;
+}
+.previous-button{
+  border-radius: 1rem  0 0 1rem;
+}
+.page-number-button{
+  margin:2rem 1rem;
+}
+.next-button{
+  border-radius: 0rem  1rem 1rem 0;
+}
+
+.page-number-button,.next-button,.previous-button{
+
+  background-color: black;
+  box-shadow: 0 0 2px 1px rgb(255, 248, 121);
+  color: rgb(255, 248, 121);
+  margin: 0.25rem;
+  box-sizing:border-box;
+  border: none;
+  cursor: pointer;
+}
+
+.current-page-number span{
+
+  color: black;
+  font-weight: bold;
+  font-family: "Russo One", sans-serif;
+  font-size: 0.8rem;
+}
+
+
+/* -----PAGINATION STYLING ENDS------ */
 
 /* ------------MEDIA QUERIES STARTS----- */
 
@@ -709,6 +766,9 @@ label {
   .homepage-container {
     margin-top: 20vh;
   }
+  .auth-div{
+    width:300px;
+  }
 }
 @media screen and (max-width: 670px) {
   .custodian-dashboard,
@@ -734,20 +794,20 @@ label {
     padding: 0.5rem;
   }
 
-  .transactions-table th {
+  .without-table th {
     display: none;
     border: none;
   }
-  .transactions-table tr {
+  .without-table tr {
     display: block;
     margin: 1rem auto;
     border: 1px solid black;
     z-index: 0;
   }
-  .transactions-table tr:nth-child(1) {
+  .without-table tr:nth-child(1) {
     display: none;
   }
-  .transactions-table tr td {
+  .without-table tr td {
     text-align: right;
     border: none;
     display: block;
@@ -757,7 +817,7 @@ label {
     word-break: break-all;
     margin: auto;
   }
-  .transactions-table tr td:before {
+  .without-table tr td:before {
     content: attr(data-label);
     text-align: left;
     position: absolute;
@@ -773,6 +833,9 @@ label {
   .about {
     padding: 0rem;
   }
+  .auth-div{
+    width:100%;
+  }
   .login-signup {
     flex-wrap: wrap;
   }
@@ -786,6 +849,21 @@ label {
   .receit {
     margin: 1rem auto;
   }
+}
+
+@media screen and (max-width: 768px) {
+.about{
+  width:100%;
+}
+.auth-div {
+  margin:auto;
+  justify-content: space-between;
+}
+.login-signup {
+ 
+  justify-content: space-evenly;
+  width:100%
+}
 }
 /* ------------MEDIA QUERIESENDS----- */
 

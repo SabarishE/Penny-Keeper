@@ -4,7 +4,7 @@ export function CustodianDashboard({
   Refresh,
   Transaction,
   custodian,
-  custodianRefresh
+  custodianRefresh,
 }) {
   useEffect(() => {
     Refresh();
@@ -42,7 +42,7 @@ export function CustodianDashboard({
         </div>
         <div className="replenishment-box">
           <h3>Amount required for replenishment</h3>
-          <span>{remaining}</span>
+          <span>${remaining}</span>
         </div>
         <div className="custodian-data">
           <div className="data-box">
@@ -71,15 +71,15 @@ export function CustodianDashboard({
                 backgroundColor: [
                   "rgb(255, 238, 0)",
                   "rgb(255, 244, 92)",
-                  "rgb(250, 246, 168)"
-                ]
-              }
-            ]
+                  "rgb(250, 246, 168)",
+                ],
+              },
+            ],
           }}
           options={{
             maintainAspectRatio: false,
 
-            legend: { display: false }
+            legend: { display: false },
           }}
         />
       </div>

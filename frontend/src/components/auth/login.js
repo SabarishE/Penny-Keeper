@@ -13,6 +13,7 @@ export function Login() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const [Load, setLoad] = useState(false);
+
   const afterLogin = (user) => {
     console.log("login success !!!", user);
     setLoad(false);
@@ -20,8 +21,8 @@ export function Login() {
     localStorage.setItem("email", user.email);
     localStorage.setItem("role", user.role);
 
-    toast(`Welcome ${user.name}`, {
-      position: toast.POSITION.BOTTOM_RIGHT
+    toast(`Welcome back ${user.name}`, {
+      position: toast.POSITION.BOTTOM_RIGHT,
     });
 
     if (user.role === "employee") {
@@ -37,8 +38,8 @@ export function Login() {
 
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     };
 
     axios
@@ -52,7 +53,7 @@ export function Login() {
         toast("Invalid credentials", {
           position: toast.POSITION.BOTTOM_RIGHT,
           className: "Toaster",
-          progressClassName: "Toaster-Progress"
+          progressClassName: "Toaster-Progress",
         });
         setLoad(false);
       });
@@ -88,10 +89,14 @@ export function Login() {
             Password
           </label>
           <input type="password" {...register("password")} required></input>
+
           <label>
             {" "}
             <span>
-              <img src={require("../../media/role.png").default} alt="role"></img>
+              <img
+                src={require("../../media/role.png").default}
+                alt="role"
+              ></img>
             </span>
             Role
           </label>
@@ -107,10 +112,10 @@ export function Login() {
           <span>
             {" "}
             <Link
-              to="/forgotpwd"
+              to="/register"
               style={{ textDecoration: "none", color: "white" }}
             >
-              Forgot Password ?
+              Register
             </Link>
           </span>
         </div>

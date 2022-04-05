@@ -85,8 +85,8 @@ function RequestForm({ Refresh, setLoad }) {
   useEffect(() => {
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     };
     // ---request to get available custodian---
     axios
@@ -110,19 +110,19 @@ function RequestForm({ Refresh, setLoad }) {
 
     from: Yup.string().required("Please Enter Your Username"),
     to: Yup.string().required("Please Select Cusdodian"),
-    description: Yup.string().required("Please Enter Description").max(30)
+    description: Yup.string().required("Please Enter Description").max(30),
   });
 
   const {
     register,
     reset,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({ resolver: yupResolver(validationSchema) });
 
   const afterFundRequest = () => {
     toast("Fund request submitted", {
-      position: toast.POSITION.BOTTOM_RIGHT
+      position: toast.POSITION.BOTTOM_RIGHT,
     });
     Refresh();
     setLoad(false);
@@ -130,13 +130,16 @@ function RequestForm({ Refresh, setLoad }) {
 
   const requestFundHandler = (data) => {
     console.log("request fund alert !!!", data);
+
+    // const [Recipient, setRecipent] = useState(requester);
+
     reset();
     setLoad(true);
 
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     };
 
     axios
@@ -152,7 +155,7 @@ function RequestForm({ Refresh, setLoad }) {
       .catch((err) => {
         console.log("error in fund request", err);
         toast("Error in fund request", {
-          position: toast.POSITION.BOTTOM_RIGHT
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
         setLoad(false);
       });
@@ -166,24 +169,29 @@ function RequestForm({ Refresh, setLoad }) {
           <input type="number" {...register("amount")} />
           {errors.amount && (
             <span className="custom-error">
-              <img src={require("../../media/alert.png").default} alt="alert"></img>{" "}
+              <img
+                src={require("../../media/alert.png").default}
+                alt="alert"
+              ></img>{" "}
               {errors.amount.message}{" "}
             </span>
           )}
         </div>
         <div>
-          <label>Your Username</label>
-          <input type="text" {...register("to")} />
-          {errors.from && (
-            <span className="custom-error">
-              <img src={require("../../media/alert.png").default} alt="alert"></img>{" "}
-              {errors.from.message}{" "}
-            </span>
-          )}
+          <label>Recipient</label>
+          <input
+            type="text"
+            {...register("to")}
+            value={localStorage.getItem("name")}
+            readOnly
+          ></input>
         </div>
         <div>
-          <label>Custodian Name</label>
+          <label>Custodian</label>
           <select {...register("from")}>
+            <option defaultValue="" disabled>
+              select custodian
+            </option>
             {Custodians.map((v) => {
               return (
                 <option value={v.name} key={v.name}>
@@ -194,7 +202,10 @@ function RequestForm({ Refresh, setLoad }) {
           </select>
           {errors.to && (
             <span className="custom-error">
-              <img src={require("../../media/alert.png").default} alt="alert"></img>{" "}
+              <img
+                src={require("../../media/alert.png").default}
+                alt="alert"
+              ></img>{" "}
               {errors.to.message}{" "}
             </span>
           )}
@@ -204,7 +215,10 @@ function RequestForm({ Refresh, setLoad }) {
           <textarea {...register("description")}></textarea>
           {errors.description && (
             <span className="custom-error">
-              <img src={require("../../media/alert.png").default} alt="alert"></img>{" "}
+              <img
+                src={require("../../media/alert.png").default}
+                alt="alert"
+              ></img>{" "}
               {errors.description.message}{" "}
             </span>
           )}

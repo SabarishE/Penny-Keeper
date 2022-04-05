@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 export const CurrentUserBadge = () => {
   const [currentUser, setcurrentUser] = useState();
@@ -31,13 +32,29 @@ export const CurrentUserBadge = () => {
             alt="user"
             src={require("../media/current-user.png").default}
             onClick={yourAccount}
+            data-tip
+            data-for="my-account"
+            data-background-color="rgb(29, 59, 29)"
+            data-type="dark"
+            data-text-color="white"
           ></img>
+          <ReactTooltip id="my-account" place="bottom" effect="solid">
+            {"my account"}
+          </ReactTooltip>
           <span>{currentUser}</span>
           <img
             alt="user"
             src={require("../media/logout.png").default}
             onClick={logOut}
+            data-tip
+            data-for="log-out"
+            data-background-color="rgb(29, 59, 29)"
+            data-type="dark"
+            data-text-color="white"
           ></img>
+          <ReactTooltip id="log-out" place="bottom" effect="solid">
+            {"Logout"}
+          </ReactTooltip>
         </div>
       ) : (
         ""

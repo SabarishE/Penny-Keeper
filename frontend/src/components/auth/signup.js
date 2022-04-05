@@ -7,17 +7,20 @@ import EmailIcon from "@material-ui/icons/Email";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 export function Signup() {
-
   const [Load, setLoad] = useState(false);
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const afterSignup = (newuser) => {
     console.log("sign up success", newuser);
     setLoad(false);
 
+    history.push("/login");
+
     toast("Registration success, Please log in ", {
-      position: toast.POSITION.BOTTOM_RIGHT
+      position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
 
@@ -27,8 +30,8 @@ export function Signup() {
     e.target.reset();
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     };
 
     axios
@@ -42,7 +45,7 @@ export function Signup() {
         toast("Error in registration", {
           position: toast.POSITION.BOTTOM_RIGHT,
           className: "Toaster",
-          progressClassName: "Toaster-Progress"
+          progressClassName: "Toaster-Progress",
         });
         setLoad(false);
       });
@@ -93,7 +96,10 @@ export function Signup() {
           <input type="password" {...register("password")} required></input>
           <label>
             <span>
-              <img src={require("../../media/role.png").default} alt="role"></img>
+              <img
+                src={require("../../media/role.png").default}
+                alt="role"
+              ></img>
             </span>
             Role
           </label>
@@ -104,6 +110,18 @@ export function Signup() {
 
           <input type="submit" value="Sign Up"></input>
         </form>
+        <div className="loginFooter">
+          {" "}
+          <span>
+            {" "}
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Log in
+            </Link>
+          </span>
+        </div>
       </div>
     </>
   );
