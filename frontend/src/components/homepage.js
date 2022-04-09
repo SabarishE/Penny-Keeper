@@ -1,6 +1,8 @@
 import { Login } from "./auth/login";
 import { Signup } from "./auth/signup";
 import { CurrentUserBadge } from "./currentUserBadge";
+import { Forgotpwd } from "./auth/forgotpwd";
+import { Resetpwd } from "./auth/resetpwd";
 
 export function HomepageOne({ setLoad }) {
   const name = localStorage.getItem("name");
@@ -41,10 +43,7 @@ export function HomepageOne({ setLoad }) {
           {/* <Login setLoad={setLoad} /> */}
           {name ? (
             <div className="homepage-image">
-              <img
-                alt="logo"
-                src={require("./media/invoice.png").default}
-              ></img>
+              <img alt="logo" src={require("../media/home.png").default}></img>
             </div>
           ) : (
             <Signup setLoad={setLoad} />
@@ -97,7 +96,8 @@ export function HomepageTwo({ setLoad }) {
               {" "}
               <img
                 alt="logo"
-                src={require("./media/invoice.png").default}
+                src={require("../media/home.png").default}
+                className="homepage-img"
               ></img>{" "}
             </div>
           ) : (

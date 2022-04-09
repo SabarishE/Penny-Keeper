@@ -52,13 +52,11 @@ body {
 }
 
 .homepage-image{
-  width:250px;
-  height:250px;
+  width:256px;
+  height:256px;
+  margin: 7rem auto 0 auto;
 }
-.homepage-image image{
-  width: 100%;
-height: 100%;
-}
+
 .badge {
   display: flex;
   justify-content: space-between;
@@ -129,6 +127,7 @@ flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-evenly;
   width: 400px;
+  
 }
 
 .employee-info .employee-id,
@@ -141,6 +140,7 @@ flex-wrap: wrap;
   font-family: "Russo One", sans-serif;
   font-weight: lighter;
   background-color: rgb(248, 243, 171);
+  border-radius: 0.5rem;
 }
 .employee-info .employee-id .e-details,
 .custodian-info .c-details {
@@ -218,6 +218,9 @@ flex-wrap: wrap;
   box-sizing: border-box;
   font-family: "Russo One", sans-serif;
 }
+.custodian-chart{
+  border-radius: 0.5rem;
+}
 .employee-dashboard .request-form form {
   height: 85%;
 }
@@ -265,6 +268,10 @@ label {
 .custom-error img {
   width: 1rem;
   height: 1rem;
+}
+
+.custodian-select:focus{
+  box-shadow: 0 0 2px 2px  red;
 }
 /* -----EMPLOYEE DASHBOARD SECTION ENDS----- */
 
@@ -485,6 +492,24 @@ label {
 }
 
 /* -----CUSTODIAN TRANSACTION TABLE STARTS----- */
+.transactions-per-page{
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+  margin-top:1rem;
+  columns: rgb(255, 248, 121);
+  font-weight: bold;
+}
+.transactions-per-page button{
+  background-color: black;
+  box-shadow: 0 0 2px 1px rgb(255, 248, 121);
+  color: rgb(255, 248, 121);
+  margin: 0.25rem;
+  box-sizing:border-box;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 .transactions-table {
   margin-top: 1rem;
   font-family: Verdana, Geneva, Tahoma;
@@ -512,18 +537,19 @@ label {
   display: flex;
 }
 
+
 /* -----CUSTODIAN TRANSACTION TABLE ENDS----- */
 
 /* -----HOME PAGE STYING STARTS------ */
 
 .homepage-container {
-  padding: 4rem 2rem 1rem 2rem;
+  padding: 3rem 2rem 1rem 2rem;
   background-image: linear-gradient(
     180deg,
     rgb(253, 248, 145) 30%,
     rgb(69, 128, 75)
   );
-  min-height: 90vh;
+  min-height: 85vh;
 }
 
 /* -----Authentication forms starts (Log in,Sign up ,Forgot password,Reset password} starts---- */
@@ -546,6 +572,12 @@ label {
     rgb(255, 248, 121) 75%,
     rgb(69, 128, 75)
   );
+}
+
+.loginFooter span{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .auth-div input,
@@ -630,6 +662,7 @@ label {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma;
   margin: auto;
+  text-align: center;
 }
 .verify-div button {
   display: block;
@@ -697,6 +730,7 @@ label {
   color: rgb(255, 248, 121);
   margin: 0.25rem;
   box-sizing:border-box;
+  font-weight: bold;
   border: none;
   cursor: pointer;
 }

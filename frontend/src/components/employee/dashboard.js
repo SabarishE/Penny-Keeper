@@ -166,7 +166,7 @@ function RequestForm({ Refresh, setLoad }) {
       <form onSubmit={handleSubmit(requestFundHandler)}>
         <div>
           <label>Amount</label>
-          <input type="number" {...register("amount")} />
+          <input type="number" {...register("amount")} autoComplete="off" />
           {errors.amount && (
             <span className="custom-error">
               <img
@@ -188,8 +188,8 @@ function RequestForm({ Refresh, setLoad }) {
         </div>
         <div>
           <label>Custodian</label>
-          <select {...register("from")}>
-            <option defaultValue="" disabled>
+          <select {...register("from")} className="custodian-select">
+            <option selected disabled value="">
               select custodian
             </option>
             {Custodians.map((v) => {

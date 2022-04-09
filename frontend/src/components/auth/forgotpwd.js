@@ -3,21 +3,15 @@ import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { Link, useHistory } from "react-router-dom";
 import EmailIcon from "@material-ui/icons/Email";
 
 export function Forgotpwd() {
   const { register, handleSubmit } = useForm();
   const [Load, setLoad] = useState(false);
+  const history = useHistory();
+
   const baselink = window.location.origin + "/resetpwd";
-  const afterForgotPwd = () => {
-    toast("Verification link sent to email", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      className: "Toaster",
-      progressClassName: "Toaster-Progress"
-    });
-    setLoad(false);
-  };
 
   const forgotpwdHandler = (v) => {
     setLoad(true);
@@ -25,13 +19,13 @@ export function Forgotpwd() {
     const data = {
       email: v.email,
       role: v.role,
-      link: baselink
+      link: baselink,
     };
     console.log("forgot password alert >>>", data);
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     };
     axios
       .post(
@@ -48,10 +42,20 @@ export function Forgotpwd() {
         toast("Error in forgot password request", {
           position: toast.POSITION.BOTTOM_RIGHT,
           className: "Toaster",
-          progressClassName: "Toaster-Progress"
+          progressClassName: "Toaster-Progress",
         });
+        history.push("./homepage");
         setLoad(false);
       });
+
+    const afterForgotPwd = () => {
+      toast("Verification link sent to email", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: "Toaster",
+        progressClassName: "Toaster-Progress",
+      });
+      setLoad(false);
+    };
   };
 
   return (
@@ -82,7 +86,10 @@ export function Forgotpwd() {
             <label>
               {" "}
               <span>
-                <img src={require("../../media/role.png").default} alt="role"></img>
+                <img
+                  src={require("../../media/role.png").default}
+                  alt="role"
+                ></img>
               </span>
               Role
             </label>

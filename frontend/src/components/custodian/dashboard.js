@@ -61,7 +61,10 @@ export function CustodianDashboard({
         </div>
       </div>
 
-      <div className="custodian-chart" style={{ color: "yellow" }}>
+      <div
+        className="custodian-chart"
+        style={{ color: "yellow", borderRadius: "0.5rem" }}
+      >
         <Doughnut
           data={{
             labels: ["Initial Fund", "Remaining", "Reimbursement"],

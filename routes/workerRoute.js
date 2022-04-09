@@ -115,181 +115,185 @@ wrouter.get("/allcustodians", async (req, res) => {
 
 // ------sending one time link to user's mail to change password -----
 
-// wrouter.post("/forgotpwd",async(req,res)=>{
+wrouter.post("/forgotpwd", async (req, res) => {
+  console.log("forgot pwd alert !!!");
 
-//     console.log("forgot pwd alert !!!");
+  if (req.body.role == "employee") {
+    // -----forgot password for employee-----
 
-// if(req.body.role=="employee"){
+    const pwdrequester = await Employee.findOne({ email: req.body.email });
 
-// // -----forgot password for employee-----
+    if (!pwdrequester) {
+      return res.status(400).send({ msg: "invalid credentials" });
+    }
+    const secretKey = pwdrequester.passwordHash;
 
-//     const pwdrequester= await Employee.findOne({email:req.body.email});
+    const payload = { email: pwdrequester.email };
 
-//     if(!pwdrequester){
-//  return res.status(400).send({msg:"invalid credentials"});
-//     }
-//      const secretKey= pwdrequester.passwordHash;
+    const token = jwt.sign(payload, secretKey);
 
-//       const payload={email:pwdrequester.email}
+    Employee.findOneAndUpdate(
+      { email: req.body.email },
+      { tempString: secretKey },
+      { new: true, useFindAndModify: false }
+    ).then((x) => console.log("user details with string update>>>>>", x));
 
-//       const token =jwt.sign(payload,secretKey);
+    //   ---creating and sending one time link---
 
-//         Employee.findOneAndUpdate({email:req.body.email},{tempString:secretKey},{new: true,useFindAndModify: false})
-//         .then((x)=>console.log("user details with string update>>>>>",x))
+    const base = req.body.link;
+    const link =
+      base + "/" + "employee" + "/" + pwdrequester.email + "/" + token;
 
-//     //   ---creating and sending one time link---
+    // var mailOptions = {
+    //   from: "one.trial.one.trial@gmail.com",
+    //   to: "one.trial.one.trial@gmail.com",
+    //   subject: "Password reset link from Penny Keeper",
+    //   html: `<h3>Verification Link from Penny Keeper</h3><p>${link}</p>
+    //     <p>Regards,<br>Penny Keeper,Your petty cash manager</p>`,
+    // };
 
-//        const base =req.body.link
-//        const link= base+"/"+"employee"+"/"+pwdrequester.email+"/"+token;
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log("Email sent: " + info.response);
+    //   }
+    // });
 
-//        var mailOptions = {
-//         from: 'one.trial.one.trial@gmail.com',
-//         to:"one.trial.one.trial@gmail.com" ,
-//         subject: 'Password reset link from Penny Keeper',
-//         html:`<h3>Verification Link from Penny Keeper</h3><p>${link}</p>
-//         <p>Regards,<br>Penny Keeper,Your petty cash manager</p>`
+    console.log("one time link >>>>", link);
+    return res.send({
+      onetimelink: link,
+      email: pwdrequester.email,
+      msg: "verification link sent to your email",
+    });
+  } else {
+    // -----forgot password for custodian-----
 
-//       };
+    const pwdrequester = await Custodian.findOne({ email: req.body.email });
 
-//       transporter.sendMail(mailOptions, function(error, info){
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log('Email sent: ' + info.response);
-//   }
-//   });
+    if (!pwdrequester) {
+      return res.status(400).send({ msg: "invalid credentials" });
+    }
+    const secretKey = pwdrequester.passwordHash;
 
-//       console.log("one time link >>>>",link);
-//      return  res.send({onetimelink:link,email:pwdrequester.email,msg:"verification link sent to your email"});
-// }
-// else{
-// // -----forgot password for custodian-----
+    const payload = { email: pwdrequester.email };
 
-// const pwdrequester= await Custodian.findOne({email:req.body.email});
+    const token = jwt.sign(payload, secretKey);
 
-// if(!pwdrequester){
-// return res.status(400).send({msg:"invalid credentials"});
-// }
-//  const secretKey= pwdrequester.passwordHash;
+    Custodian.findOneAndUpdate(
+      { email: req.body.email },
+      { tempString: secretKey },
+      { new: true, useFindAndModify: false }
+    ).then((x) => console.log("user details with string update>>>>>", x));
 
-//   const payload={email:pwdrequester.email}
+    //   ---creating and sending one time link---
 
-//   const token =jwt.sign(payload,secretKey);
+    const base = req.body.link;
+    const link =
+      base + "/" + pwdrequester.role + "/" + pwdrequester.email + "/" + token;
 
-//     Custodian.findOneAndUpdate({email:req.body.email},{tempString:secretKey},{new: true,useFindAndModify: false})
-//     .then((x)=>console.log("user details with string update>>>>>",x))
+    console.log("one time link >>>>", link);
 
-// //   ---creating and sending one time link---
+    // var mailOptions = {
+    //   from: "one.trial.one.trial@gmail.com",
+    //   to: "one.trial.one.trial@gmail.com",
+    //   subject: "Password reset link from Penny Keeper",
+    //   html: `<h3>Verification Link from Penny Keeper</h3><p>${link}</p>
+    // <p>Regards,<br>Penny Keeper,Your petty cash manager</p>`,
+    // };
 
-//    const base =req.body.link
-//    const link= base+"/"+pwdrequester.role+"/"+pwdrequester.email+"/"+token;
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log("Email sent: " + info.response);
+    //   }
+    // });
+    return res.send({
+      onetimelink: link,
+      email: pwdrequester.email,
+      msg: "verification link sent to your email",
+    });
+  }
+});
 
-//   console.log("one time link >>>>",link);
+//   --------verifying the token received-------
 
-// var mailOptions = {
-//     from: 'one.trial.one.trial@gmail.com',
-//     to:"one.trial.one.trial@gmail.com" ,
-//     subject: 'Password reset link from Penny Keeper',
-//     html:`<h3>Verification Link from Penny Keeper</h3><p>${link}</p>
-//     <p>Regards,<br>Penny Keeper,Your petty cash manager</p>`
-// };
+wrouter.get("/resetpwd/:role/:email/:token", async (req, res) => {
+  console.log("reset pwd alert GET !!!");
 
-//   transporter.sendMail(mailOptions, function(error, info){
-// if (error) {
-// console.log(error);
-// } else {
-// console.log('Email sent: ' + info.response);
-// }
-// });
-// return res.send({onetimelink:link,email:pwdrequester.email,msg:"verification link sent to your email"});
-// }
+  const { role, email, token } = req.params;
 
-//   });
+  if (role == "employee") {
+    const pwdrequester = await Employee.findOne({ email });
 
-// //   --------verifying the token received-------
+    //----- Verification of received JWT token ------
 
-//   wrouter.get("/resetpwd/:role/:email/:token",async(req,res)=>{
+    jwt.verify(token, pwdrequester.tempString, async (err, data) => {
+      if (err) {
+        res.status(403).send({ msg: "Request Forbidden" });
+        console.log("access forbidden");
+      } else {
+        console.log("password change allowed!!!", data);
+        res.send({ msg: "Request Accepted", data: pwdrequester });
+      }
+    });
+  } else {
+    const pwdrequester = await Custodian.findOne({ email });
 
-//     console.log("reset pwd alert GET !!!");
+    //----- Verification of received JWT token ------
 
-//   const {role,email,token}=req.params;
+    jwt.verify(token, pwdrequester.tempString, async (err, data) => {
+      if (err) {
+        res.status(403).send({ msg: "Request Forbidden", flag: true });
+        console.log("access forbidden");
+      } else {
+        console.log("password change allowed for custodian!!!", data);
+        res.send({
+          msg: "Link verified successfully",
+          data: pwdrequester,
+          flag: true,
+        });
+      }
+    });
+  }
+});
 
-//   if(role=="employee")
-//   {
-//     const pwdrequester= await Employee.findOne({email});
+//---------- new changed password post and update -----------
 
-//     //----- Verification of received JWT token ------
+wrouter.post("/resetpwd/:role/:email/:token", async (req, res) => {
+  console.log("reset pwd alert POST !!!");
 
-//   jwt.verify(token,pwdrequester.tempString,async(err,data)=>{
+  const salt = await bcrypt.genSalt(10);
+  const passwordHash = await bcrypt.hash(req.body.pwd, salt);
 
-//       if(err){
-//           res.status(403).send({msg:"Request Forbidden"})
-//           console.log("access forbidden")
-//       }
-//       else{
-//           console.log("password change allowed!!!",data);
-//           res.send({msg:"Request Accepted",data:pwdrequester})
-//       }
-//   });
-
-//   }
-//   else{
-
-//     const pwdrequester= await Custodian.findOne({email});
-
-//     //----- Verification of received JWT token ------
-
-//   jwt.verify(token,pwdrequester.tempString,async(err,data)=>{
-
-//       if(err){
-//           res.status(403).send({msg:"Request Forbidden"})
-//           console.log("access forbidden")
-//       }
-//       else{
-//           console.log("password change allowed for custodian!!!",data);
-//           res.send({msg:"Request Accepted",data:pwdrequester})
-//       }
-//   });
-
-//   }
-// });
-
-//   //---------- new password post and update -----------
-
-//    wrouter.post("/resetpwd/:role/:email/:token",async(req,res)=>{
-
-//  console.log("reset pwd alert POST !!!");
-
-//     const salt=await bcrypt.genSalt(10);
-//     const passwordHash =await bcrypt.hash(req.body.pwd,salt);
-
-//     if(req.params.role=="employee")
-//      {
-//                 Employee.findOneAndUpdate({email:req.params.email},{passwordHash,tempString:""},{new: true,useFindAndModify: false})
-
-//               .then((m) => {
-//                   if (!m) {
-//                       console.log("error in password change");
-//                       return res.status(404);
-//                   }
-//                   else{
-//                       res.send({msg:"Password Changed Successfully"});
-//                       console.log("password changed",m)
-//                   }
-//                 })
-//      }
-//     else{
-//                 Custodian.findOneAndUpdate({email:req.params.email},{passwordHash,tempString:""},{new: true,useFindAndModify: false})
-
-//               .then((m) => {
-//                   if (!m) {
-//                       console.log("error in password change");
-//                       return res.status(404);
-//                   }
-//                   else{
-//                       res.send({msg:"Password Changed Successfully"});
-//                       console.log("password changed",m)
-//                   }
-//                 })
-// }
-// });
+  if (req.params.role == "employee") {
+    Employee.findOneAndUpdate(
+      { email: req.params.email },
+      { passwordHash, tempString: "" },
+      { new: true, useFindAndModify: false }
+    ).then((m) => {
+      if (!m) {
+        console.log("error in password change");
+        return res.status(404);
+      } else {
+        res.send({ msg: "Password Changed Successfully" });
+        console.log("password changed", m);
+      }
+    });
+  } else {
+    Custodian.findOneAndUpdate(
+      { email: req.params.email },
+      { passwordHash, tempString: "" },
+      { new: true, useFindAndModify: false }
+    ).then((m) => {
+      if (!m) {
+        console.log("error in password change");
+        return res.status(404);
+      } else {
+        res.send({ msg: "Password Changed Successfully" });
+        console.log("password changed", m);
+      }
+    });
+  }
+});

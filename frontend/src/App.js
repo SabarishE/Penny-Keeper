@@ -31,7 +31,7 @@ export default function App() {
           <ProtectedRouteE exact path="/employee" component={Employee} />
           <ProtectedRouteC exact path="/custodian" component={Custodian} />
 
-          {/* <Route path="/forgotpwd" component={Forgotpwd}/> */}
+          <Route path="/forgotpwd" component={Forgotpwd} />
           <Route path="/register" component={HomepageOne} />
           <Route path="/login" component={HomepageTwo} />
           <Route path="/resetpwd" component={Resetpwd} />

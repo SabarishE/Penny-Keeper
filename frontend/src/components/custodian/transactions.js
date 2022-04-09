@@ -2,8 +2,8 @@ import { set } from "mongoose";
 import { useState, useEffect } from "react";
 export function CustodianTransactionRecord({ Transaction }) {
   const [PageNumber, setPageNumber] = useState(0);
+  const [transactionsPerPage, settransactionsPerPage] = useState(10);
 
-  const transactionsPerPage = 10;
   const transactionsVisited = PageNumber * transactionsPerPage;
   const totalPages = Math.ceil(Transaction.length / transactionsPerPage);
 
@@ -16,7 +16,31 @@ export function CustodianTransactionRecord({ Transaction }) {
   return (
     <>
       <div className="custodian-transactions">
-        <h1>Transaction record</h1>
+        <h1>Transaction record </h1>
+        <span className="transactions-per-page">
+          {"transactions per page: "}
+          <button
+            onClick={() => {
+              settransactionsPerPage(10);
+            }}
+          >
+            10
+          </button>
+          <button
+            onClick={() => {
+              settransactionsPerPage(25);
+            }}
+          >
+            25
+          </button>
+          <button
+            onClick={() => {
+              settransactionsPerPage(50);
+            }}
+          >
+            50
+          </button>
+        </span>
         <table className="transactions-table without-table">
           <thead>
             <tr>

@@ -117,6 +117,12 @@ export function Login() {
             >
               Register
             </Link>
+            <Link
+              to="/forgotpwd"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Forgot password
+            </Link>
           </span>
         </div>
       </div>
