@@ -38,7 +38,7 @@
 // import sgMail from "@sendgrid/mail";
 
 // sgMail.setApiKey(
-//   "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"
+//   "api key goes here"
 // );
 // const msg = {
 //   to: "sabarishtrblzr@gmail.com", // Change to your recipient
