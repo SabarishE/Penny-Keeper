@@ -2,11 +2,11 @@
 // import { google } from "googleapis";
 
 // const client_id =
-//   "543519367783-8rthmcbg05l5ue049mstkmb3qjjugk7e.apps.googleusercontent.com";
+//   "";
 // const client_secret = process.env.CLIENT_SECRET;
 // const redirect_uri = "https://developers.google.com/oauthplayground";
 // const Refresh_Token =
-//   "1//04vkZZ91m3c3KCgYIARAAGAQSNwF-L9IriFsMlTVP8zmraXKSioA2iIg6ziPN7UhL1fKgAFvPj3Y54Rh4LW559b_5Bn7fW1-z3XY";
+//   "";
 
 // const oAuth2Client = new google.auth.OAuth2(
 //   client_id,
